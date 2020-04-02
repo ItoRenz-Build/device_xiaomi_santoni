@@ -154,6 +154,9 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
+# Netflix
+ro.netflix.bsp_rev=Q660-13149-1
+
 # Netmgrd
 ro.vendor.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
