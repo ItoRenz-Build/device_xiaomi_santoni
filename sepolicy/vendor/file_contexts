@@ -27,7 +27,7 @@
 /data/system/fingerprint(/.*)?              u:object_r:gx_fpd_data_file:s0
 
 # HALs
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.2-service.custom                 u:object_r:hal_fingerprint_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service.custom                 u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.lights-service\.santoni     u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.perf@2\.1-service       u:object_r:hal_perf_default_exec:s0
 

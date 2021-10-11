@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.biometrics.fingerprint@2.2-service.custom"
-#define LOG_VERBOSE "android.hardware.biometrics.fingerprint@2.2-service.custom"
+#define LOG_TAG "android.hardware.biometrics.fingerprint@2.3-service.custom"
+#define LOG_VERBOSE "android.hardware.biometrics.fingerprint@2.3-service.custom"
 
 #include <hardware/hw_auth_token.h>
 #include <hardware/hardware.h>
@@ -28,7 +28,7 @@ namespace android {
 namespace hardware {
 namespace biometrics {
 namespace fingerprint {
-namespace V2_1 {
+namespace V2_3 {
 namespace implementation {
 
 using RequestStatus =
@@ -144,7 +144,7 @@ Return<uint64_t> BiometricsFingerprint::setNotify(
         const sp<IBiometricsFingerprintClientCallback>& clientCallback) {
     std::lock_guard<std::mutex> lock(mClientCallbackMutex);
     mClientCallback = clientCallback;
-    // This is here because HAL 2.1 doesn't have a way to propagate a
+    // This is here because HAL 2.3 doesn't have a way to propagate a
     // unique token for its driver. Subsequent versions should send a unique
     // token for each call to setNotify(). This is fine as long as there's only
     // one fingerprint device on the platform.
@@ -352,8 +352,56 @@ void BiometricsFingerprint::notify(const fingerprint_msg_t *msg) {
     }
 }
 
+/**
+ * Returns whether the fingerprint sensor is an under-display fingerprint
+ * sensor.
+ * @param sensorId the unique sensor ID for which the operation should be
+ * performed.
+ * @return isUdfps indicating whether the specified sensor is an
+ * under-display fingerprint sensor.
+ */
+Return<bool> BiometricsFingerprint::isUdfps(uint32_t /* sensorId */) {
+    return false;
+}
+
+/**
+ * Notifies about a touch occurring within the under-display fingerprint
+ * sensor area.
+ *
+ * It it assumed that the device can only have one active under-display
+ * fingerprint sensor at a time.
+ *
+ * If multiple fingers are detected within the sensor area, only the
+ * chronologically first event will be reported.
+ *
+ * @param x The screen x-coordinate of the center of the touch contact area, in
+ * display pixels.
+ * @param y The screen y-coordinate of the center of the touch contact area, in
+ * display pixels.
+ * @param minor The length of the minor axis of an ellipse that describes the
+ * touch area, in display pixels.
+ * @param major The length of the major axis of an ellipse that describes the
+ * touch area, in display pixels.
+ */
+Return<void> BiometricsFingerprint::onFingerDown(uint32_t /* x */, uint32_t /* y */,
+                                                 float /* minor */, float /* major */) {
+    return Void();
+}
+/**
+ * Notifies about a finger leaving the under-display fingerprint sensor area.
+ *
+ * It it assumed that the device can only have one active under-display
+ * fingerprint sensor at a time.
+ *
+ * If multiple fingers have left the sensor area, only the finger which
+ * previously caused a "finger down" event will be reported.
+ */
+Return<void> BiometricsFingerprint::onFingerUp() {
+    return Void();
+}
+
 }  // namespace implementation
-}  // namespace V2_1
+}  // namespace V2_3
 }  // namespace fingerprint
 }  // namespace biometrics
 }  // namespace hardware
