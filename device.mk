@@ -122,6 +122,8 @@ PRODUCT_PACKAGES += \
 # Audio features
 PRODUCT_PACKAGES += \
     libhfp:32 \
+    libldacBT_bco:32 \
+    libldacBT_dec:32 \
     libsndmonitor:32 \
     libspkrprot:32
 
