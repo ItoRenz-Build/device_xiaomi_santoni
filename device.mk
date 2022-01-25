@@ -108,7 +108,7 @@ PRODUCT_PACKAGES += \
     libnbaio
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl:32 \
+    android.hardware.audio-impl:32 \
     android.hardware.audio.service \
     android.hardware.audio@7.0 \
     android.hardware.audio@7.0-impl:32 \
