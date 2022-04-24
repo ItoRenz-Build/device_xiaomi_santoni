@@ -20,42 +20,22 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
 # Inherit from santoni device
+TARGET_BOOT_ANIMATION_RES := 720
+NAD_BUILD_TYPE := OFFICIAL
+USE_PIXEL_CHARGING := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
+$(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
+
+# Inherit from santoni device
 $(call inherit-product, device/xiaomi/santoni/device.mk)
-
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# Prebuilt apps
-$(call inherit-product-if-exists, vendor/prebuilt-apps/config.mk)
-
-# GApps
-$(call inherit-product-if-exists, vendor/gapps/core/config.mk)
 
 PRODUCT_DEVICE := santoni
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 4X
-PRODUCT_NAME := lineage_santoni
+PRODUCT_NAME := nad_santoni
 BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
-
-# Touch HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.xiaomi_8937
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
-
-# Boot animation
-TARGET_BOOT_ANIMATION_RES := 720
-	
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
