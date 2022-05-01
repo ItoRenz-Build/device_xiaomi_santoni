@@ -2,6 +2,20 @@ get_prop(untrusted_app, vendor_camera_prop)
 get_prop(untrusted_app, boottime_prop)
 get_prop(untrusted_app, vendor_persist_camera_prop)
 get_prop(untrusted_app, exported_camera_prop)
+allow untrusted_app adsprpcd_file:dir { getattr };
+allow untrusted_app baseband_prop:file { read };
+allow untrusted_app blkio:dir { search };
+allow untrusted_app mnt_media_rw_file:dir { getattr };
+allow untrusted_app mnt_pass_through_file:dir { getattr };
+allow untrusted_app proc_pid_max:file { read };
 allow untrusted_app proc_vmstat:file { getattr };
+allow untrusted_app rootfs:dir { read };
+allow untrusted_app sysfs_net:dir { search };
+allow untrusted_app untrusted_app:udp_socket { ioctl };
 
+dontaudit untrusted_app mnt_sdcard_file:lnk_file { read };
+dontaudit untrusted_app mnt_vendor_file:dir { search };
+dontaudit untrusted_app untrusted_app:netlink_route_socket { bind };
+dontaudit untrusted_app proc_tty_drivers:file { read };
+dontaudit untrusted_app serialno_prop:file { read };
 dontaudit untrusted_app virtual_ab_prop:file read;
