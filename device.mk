@@ -230,12 +230,6 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.2-service.custom \
     android.hardware.biometrics.fingerprint@2.2.vendor \
 
-# FM
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
-
 # fwk-detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
