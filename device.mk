@@ -229,7 +229,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.2-service.custom \
     android.hardware.biometrics.fingerprint@2.2.vendor \
-    fakelogprint
 
 # FM
 PRODUCT_PACKAGES += \

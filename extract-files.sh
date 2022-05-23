@@ -77,11 +77,6 @@ function blob_fixup() {
         esac
 }
 
-# Goodix
-patchelf --add-needed fakelogprint.so gx_fpd
-patchelf --add-needed fakelogprint.so fingerprint.goodix.so
-patchelf --add-needed fakelogprint.so gxfingerprint.default.so
-
 # Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
