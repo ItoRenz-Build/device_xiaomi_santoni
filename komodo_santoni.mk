@@ -23,6 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk
 KOMODO_OFFICIAL := true
 KOMODO_GAPPS_TYPE := nogapps
 KOMODO_VARIANT := RELEASE
+TARGET_SUPPORTS_QUICK_TAP := true
 $(call inherit-product, vendor/komodo/config/common.mk)
 
 # Inherit from santoni device
