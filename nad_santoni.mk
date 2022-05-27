@@ -24,6 +24,7 @@ TARGET_BOOT_ANIMATION_RES := 720
 NAD_BUILD_TYPE := OFFICIAL
 USE_PIXEL_CHARGING := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := true
 $(call inherit-product, vendor/nusantara/config/common_full_phone.mk)
 
 # Inherit from santoni device
