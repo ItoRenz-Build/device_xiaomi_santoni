@@ -4,6 +4,7 @@ get_prop(untrusted_app, vendor_persist_camera_prop)
 get_prop(untrusted_app, exported_camera_prop)
 allow untrusted_app adsprpcd_file:dir { getattr };
 allow untrusted_app adsprpcd_file:filesystem { getattr };
+allow untrusted_app apex_info_file:file { getattr };
 allow untrusted_app baseband_prop:file { read open getattr };
 allow untrusted_app blkio:dir { search };
 allow untrusted_app block_device:dir { search };
@@ -13,6 +14,7 @@ allow untrusted_app init_exec:lnk_file { read open getattr };
 allow untrusted_app linkerconfig_file:dir { getattr };
 allow untrusted_app mnt_media_rw_file:dir { getattr };
 allow untrusted_app mnt_pass_through_file:dir { getattr };
+allow untrusted_app odsign_prop:file { read };
 allow untrusted_app postinstall_mnt_dir:dir { getattr };
 allow untrusted_app proc:file { getattr };
 allow untrusted_app proc_asound:dir { search };
@@ -25,13 +27,17 @@ allow untrusted_app qemu_hw_prop:file { read open getattr };
 allow untrusted_app qemu_sf_lcd_density_prop:file { read open getattr };
 allow untrusted_app rootfs:dir { read open };
 allow untrusted_app rootfs:file { getattr };
+allow untrusted_app sysfs:dir { read };
 allow untrusted_app system_data_file:dir { read open };
-allow untrusted_app sysfs_net:dir { search };
+allow untrusted_app system_file:file { lock };
+allow untrusted_app sysfs_net:dir { read open search };
 allow untrusted_app sysfs_net:file { getattr };
 allow untrusted_app sysfs_switch:dir { search };
 allow untrusted_app untrusted_app:udp_socket { ioctl };
 allow untrusted_app user_profile_data_file:dir { getattr };
 allow untrusted_app vendor_firmware_file:dir { read open };
+allow untrusted_app vold_exec:file { read };
+allow untrusted_app wifi_hal_prop:file { read open getattr };
 allow untrusted_app zygote:unix_stream_socket { getopt };
 
 dontaudit untrusted_app mirror_data_file:dir { getattr };
