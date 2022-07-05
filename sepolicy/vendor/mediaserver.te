@@ -1,2 +1,3 @@
 get_prop(mediaserver, vendor_sys_video_prop)
+allow mediaserver drmserver:drmservice { openDecryptSession };
 allow mediaserver package_native_service:service_manager find;
